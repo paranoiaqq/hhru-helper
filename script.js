@@ -3,12 +3,12 @@ function delay(ms) {
 }
 
 async function init() {
-  const vacancyButtons = document.querySelectorAll(
-    '[data-qa="vacancy-serp__vacancy_response"]'
+  const vacancyButtons = Array.from(
+    document.querySelectorAll('[data-qa="vacancy-serp__vacancy_response"]')
   );
-  const vacancyLinks = document
-    .querySelector('[data-qa="serp-item__title"]')
-    .map((element) => element.href.split("?")[0]);
+  const vacancyLinks = Array.from(
+    document.querySelectorAll('[data-qa="serp-item__title"]')
+  ).map((element) => element.href.split("?")[0]);
 
   for (let i = 0; i < vacancyButtons.length; i++) {
     const letterData = `Здравствуйте, меня зовут Никита, я Frontend-разработчик с 2+ годами опыта. Пишу на TypeScript, React, Redux.
@@ -42,7 +42,7 @@ async function init() {
   }
 }
 
-async function addInitButton() {
+(async function addInitButton() {
   function createButton(title) {
     const div = document.createElement("div");
     div.classList.add(
@@ -61,6 +61,7 @@ async function addInitButton() {
     link.addEventListener("click", init);
     link.innerText = title;
     link.append(styleDiv);
+    div.appendChild(link);
 
     return div;
   }
@@ -72,6 +73,4 @@ async function addInitButton() {
   );
   const initButton = createButton("Отправить отклики");
   navLinks[2].append(initButton);
-}
-
-addInitButton();
+})();
