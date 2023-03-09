@@ -23,22 +23,42 @@ async function init() {
     vacancyButtons[i].click();
     await delay(1000);
 
-    const attachLetterButton = document.querySelector(
-      '[data-qa="vacancy-response-letter-toggle"]'
+    let attachLetterButton;
+    do {
+      attachLetterButton = document.querySelector(
+        '[data-qa="vacancy-response-letter-toggle"]'
+      );
+    } while (
+      !document.querySelector('[data-qa="vacancy-response-letter-toggle"]')
     );
+
     attachLetterButton.click();
     await delay(1000);
 
-    const letterTextarea = document.getElementsByClassName(
-      "bloko-textarea bloko-textarea_sized-rows"
-    )[0];
+    let letterTextarea;
+    do {
+      letterTextarea = document.getElementsByClassName(
+        "bloko-textarea bloko-textarea_sized-rows"
+      )[0];
+    } while (
+      !document.getElementsByClassName(
+        "bloko-textarea bloko-textarea_sized-rows"
+      )[0]
+    );
+
     letterTextarea.value = letterData;
     await delay(1000);
 
-    const submitLetterButton = document.querySelector(
-      '[data-qa="vacancy-response-letter-submit"]'
+    let submitLetterButton;
+    do {
+      submitLetterButton = document.querySelector(
+        '[data-qa="vacancy-response-letter-submit"]'
+      );
+    } while (
+      !document.querySelector('[data-qa="vacancy-response-letter-submit"]')
     );
     submitLetterButton.click();
+    await delay(1000);
   }
 }
 
