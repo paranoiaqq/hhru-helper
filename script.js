@@ -11,14 +11,7 @@ async function init() {
   ).map((element) => element.href.split("?")[0]);
 
   for (let i = 0; i < vacancyButtons.length; i++) {
-    const letterData = `Здравствуйте, меня зовут Никита, я Frontend-разработчик с 2+ годами опыта. Пишу на TypeScript, React, Redux.
-
-Меня заинтересовала ваша вакансия: ${vacancyLinks[i]}
-
-Уверен, что смогу усилить вашу команду. У меня есть релевантный опыт разработки SPA на React.
-
-Если у вас есть какие-то вопросы, с удовольствием на них отвечу. Буду рад любому фидбеку.
-Мой телеграм для связи: t.me/quinckyyy`;
+    const letterData = `Шаблон сопроводительного письма, можно использовать ${vacancyLinks[i]}`;
 
     vacancyButtons[i].click();
     await delay(1000);
